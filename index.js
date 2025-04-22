@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');  // For cross-origin requests
 const dotenv = require('dotenv'); // For loading environment variables
 const authRoutes = require('./routes/authRoutes'); // Import your auth routes
+const postRoutes = require('./routes/postRoute')
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -21,6 +22,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Use routes (add the necessary route files)
 app.use('/auth', authRoutes); // Auth routes (login, register, etc.)
+
+app.use('/post', postRoutes)
 
 // Example of another route (you will add more later as needed)
 app.get('/', (req, res) => {

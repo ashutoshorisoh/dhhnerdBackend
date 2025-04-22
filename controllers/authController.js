@@ -1,4 +1,4 @@
-const User = require('../models/user.model');
+const User = require('../models/user.model.js');
 const bcrypt = require('bcryptjs'); // Use bcryptjs instead of bcrypt
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
@@ -22,6 +22,7 @@ const login = async (req, res) => {
 
     // Generate a JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    console.log(token)
 
     // Send the token in the response
     res.json({ token });

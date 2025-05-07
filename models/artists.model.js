@@ -9,10 +9,17 @@ const artistSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    songs: {
-        type: String
-    }
-
+    tracks: [{
+        track_name: String,
+        category: String, // album, single, or ep
+        image_link: String,
+        spotify_link: String,
+        featured_artists: [{
+            name: String,
+            spotify_id: String
+        }],
+        release_date: String
+    }]
 });
 
 module.exports = mongoose.model('artist', artistSchema);
